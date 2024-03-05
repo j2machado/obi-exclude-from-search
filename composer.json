@@ -1,0 +1,20 @@
+{
+    "name": "obijuan/obi-exclude-from-search",
+    "description": "Exclude posts, pages, post types and taxonomies from the WordPress search",
+    "type": "wordpress-plugin",
+    "license": "GPL2 or Later",
+    "autoload": {
+        "psr-4": {
+            "ObiExcludeFromSearch\\Includes\\Admin\\": "includes/admin/",
+            "ObiExcludeFromSearch\\Includes\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Obi Juan",
+            "email": "hola@obijuan.dev"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

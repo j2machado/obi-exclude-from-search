@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<ruleset name="Obi Exclude From Search Coding Standards">
+  <description>Custom coding standards configuration for Obi Exclude from Search.</description>
+  <!--
+    PHPCS flags:
+    n:  Do not print warnings.
+    s:  Show sniff codes in all reports.
+    p:  Show progress of the run.
+  -->
+  <arg value="nsp"/>
+  <!-- Check all files in the current local directory and all subdirectories. -->
+  <file>.</file>
+  <!-- Check files with PHP extensions only. -->
+  <arg name="extensions" value="php"/>
+  <!-- Use colors in output. -->
+  <arg value="-colors"/>
+  <!-- Include WordPress Coding Standards. -->
+  <rule ref="WordPress">
+    <!-- Exclude the following rules. -->
+    <exclude name="Squiz.Commenting.ClassComment.Missing"/>
+    <exclude name="Squiz.Commenting.FileComment.Missing"/>
+    <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+    <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+    <exclude name="Squiz.Commenting.VariableComment.Missing"/>
+    <exclude name="WordPress.WP.DeprecatedFunctions.sanitize_urlFound"/>
+    <exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion"/>
+    <exclude name="WordPress.Security.NonceVerification.Missing"/>
+  </rule>
+  <rule ref="PHPCompatibilityWP"/>
+  <config name="testVersion" value="7.4-"/>
+  <config name="minimum_supported_wp_version" value="5.9"/>
+</ruleset>
