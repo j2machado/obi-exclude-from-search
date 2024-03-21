@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Obi Exclude from Search
  * Description: Include or exclude (custom) post types from the WordPress search feature.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Obi Juan <hola@obijuan.dev>
  * Author URI: https://obijuan.dev
  * Plugin URI: https://obijuan.dev/obi-remove-post-types-from-search
@@ -34,8 +34,22 @@ use ObiExcludeFromSearch\Includes\PostTypes;
 final class Obi_Init {
 
 
+	/**
+	 * Instance
+	 *
+	 * @var Obi_Init
+	 * @access private
+	 * @static
+	 * @since 1.0.0
+	 */
 	private static $instance;
 
+
+	/**
+	 * Initialize the plugin
+	 *
+	 * @since 1.0.0
+	 */
 	private function __construct() {
 
 		self::define_constants();
@@ -43,6 +57,12 @@ final class Obi_Init {
 		self::check_minimum_php_version();
 	}
 
+	/**
+	 * Get the instance of the class.
+	 *
+	 * @since 1.0.0
+	 * @return Obi_Init
+	 */
 	public static function get_instance() {
 
 		if ( ! isset( self::$instance ) ) {
@@ -52,9 +72,15 @@ final class Obi_Init {
 		return self::$instance;
 	}
 
+
+	/**
+	 * Define constants
+	 *
+	 * @since 1.0.0
+	 */
 	private static function define_constants() {
 
-		define( 'OBI_EXCLUDE_FROM_SEARCH_VERSION', '1.0.0' );
+		define( 'OBI_EXCLUDE_FROM_SEARCH_VERSION', '1.0.1' );
 		define( 'OBI_EXCLUDE_FROM_SEARCH_TEXTDOMAIN', 'obi-exclude-from-search' );
 		define( 'OBI_EXCLUDE_FROM_SEARCH_DIRNAME', plugin_basename( __DIR__ ) );
 		define( 'OBI_EXCLUDE_FROM_SEARCH_FILE', __FILE__ );
@@ -64,19 +90,39 @@ final class Obi_Init {
 		define( 'OBI_EXCLUDE_FROM_SEARCH_MINIMUM_PHP_REQUIREMENT', '7.4' );
 	}
 
+
+	/**
+	 * Load the plugin
+	 *
+	 * Load the classes we depend on and initialize the plugin.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function load_obi_plugin() {
 		// On plugins loaded...
 		AdminPage::get_instance();
 		PostTypes::get_instance();
 	}
 
+
+	/**
+	 * Activate the plugin
+	 *
+	 * @since 1.0.0
+	 */
 	public static function activate() {
 
 		// On plugin activation...
 
+		// Initialize post type statuses.
 		PostTypes::initialize_post_type_statuses();
 	}
 
+	/**
+	 * Deactivate the plugin
+	 *
+	 * @since 1.0.0
+	 */
 	public static function deactivate() {
 
 		// On plugin deactivation...
@@ -100,6 +146,14 @@ final class Obi_Init {
 		return version_compare( phpversion(), self::obi_exclude_from_search_minimum_php_requirement(), '>=' );
 	}
 
+
+	/**
+	 * Check if PHP version meets minimum requirements.
+	 *
+	 * Enqueue admin notice if not.
+	 *
+	 * @since 1.0.0
+	 */
 	public static function check_minimum_php_version() {
 
 		// Ensuring our PHP version requirement is met first before loading the Obi Exclude From Search plugin.
@@ -113,7 +167,6 @@ final class Obi_Init {
 			return;
 		}
 	}
-
 
 	/**
 	 * Admin notice for PHP version requirement.
@@ -139,8 +192,27 @@ final class Obi_Init {
 
 
 
-
+/**
+ * Get the instance of the class.
+ *
+ * @since 1.0.0
+ * @return Obi_Init
+ */
 $obi_plugin = Obi_Init::get_instance();
 
-register_activation_hook( OBI_EXCLUDE_FROM_SEARCH_FILE, array( $obi_plugin, 'activate' ) );
+/**
+ * Load the classes we depend on to run the plugin.
+ *
+ * Load - AdminPage.
+ * Load - PostTypes.
+ *
+ * @since 1.0.0
+ */
 add_action( 'plugins_loaded', array( $obi_plugin, 'load_obi_plugin' ) );
+
+/**
+ * Activate the plugin
+ *
+ * @since 1.0.0
+ */
+register_activation_hook( OBI_EXCLUDE_FROM_SEARCH_FILE, array( $obi_plugin, 'activate' ) );
