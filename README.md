@@ -32,7 +32,7 @@ If there is a post type that is unchecked, and you want to include it in the Wor
 - Add a {plugin_name} - {post_type} structure in the 'Exclude full post types' list.
 - Refactor the adjust_search_query logic. Instead of including posts or post types, we are geared towards excluding them.
 - Refactor the options selection logic in the admin UI. Instead of checking the included post types, we should check the post types to be excluded and keep the ones included unchecked.
-- Add a general exclusion rule by user role. E.g., exclude admins from the plugin's rules (admins will be unaffected by the plugins logic).
+- Add a general exclusion rule by user role. E.g., admins can bypass the exclude from search rules.
 - Add a general exclusion rule by login status. E.g., exclude logged-in or logged-out visitors from the plugin's rules.
 - Add an Exclude from Search option on each individual post edit page.
 - Add an Exclude from Search bulk edit capability for posts in any (custom) post types.
