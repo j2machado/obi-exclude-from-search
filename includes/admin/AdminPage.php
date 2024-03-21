@@ -49,6 +49,11 @@ class AdminPage {
 	private static $admin_slug;
 
 
+	/**
+	 * Initialize the plugin
+	 *
+	 * @since 1.0.0
+	 */
 	private function __construct() {
 		/**
 		 * Register the options page
