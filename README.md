@@ -20,12 +20,12 @@ Behind the scenes, we retrieve the available public post types in the website an
 
 If a plugin that registers custom post types is removed, then those specific post types are removed from the option.  
 
-If a new plugin later in time is added which adds public custom post types, these are added to the options with their respective statuses.  
----
+If a new plugin later in time is added which adds public custom post types, these are added to the options with their respective statuses.
+
 Post types that are search-enabled, will have their respective checkbox as 'checked'. **(THIS IS TO GOING TO BE CHANGED TO THE OPPOSITE BEHAVIOR)**.
 
-If there is a post type that is unchecked, and you want to include it in the WordPress search, simply check the checkbox and save the changes.
----
+If there is a post type that is unchecked, and you want to include it in the WordPress search, simply check the checkbox and save the changes. **(THIS IS TO GOING TO BE CHANGED TO THE OPPOSITE BEHAVIOR)**.
+
 
 ## TODO:
 
